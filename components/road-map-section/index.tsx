@@ -195,7 +195,7 @@ export const RoadmapSection: React.FC = () => {
 		items: [
 			{ text: "60 buổi" },
 			{ text: "60 buổi" },
-			{ text: "120 bu���i" },
+			{ text: "120 buổi" },
 			{ text: "120 buổi" },
 			{ text: "180 buổi" },
 		],
@@ -230,113 +230,141 @@ export const RoadmapSection: React.FC = () => {
 	];
 
 	return (
-		<section className="flex overflow-hidden relative items-start py-10">
+		<section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-yellow-50 relative overflow-hidden">
+			{/* Background decoration */}
+			<div className="absolute inset-0 bg-gradient-soft"></div>
+			<div className="absolute top-20 left-20 w-32 h-32 bg-[#FFEA00] rounded-full opacity-10 animate-float"></div>
+			<div className="absolute bottom-20 right-20 w-40 h-40 bg-[#083D77] rounded-full opacity-5 animate-float delay-300"></div>
+
+			{/* Background image */}
 			<img
 				src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/908b52567c05761a61c0979fd65758b228ed742f?placeholderIfAbsent=true"
-				className="object-contain absolute bottom-0 left-2/4 z-0 -translate-x-2/4 aspect-[1.14] h-[840px] translate-y-[0%] w-[800px] max-md:max-w-full"
+				className="absolute inset-0 w-full h-full object-cover opacity-5 z-0"
 				alt=""
 			/>
-			<div className="z-0 self-stretch my-auto w-[800px] max-md:max-w-full">
-				<header className="flex flex-wrap justify-between items-center px-10 w-full max-md:px-5 max-md:max-w-full">
-					<div className="flex-1 shrink self-stretch my-auto text-3xl font-extrabold text-sky-900 basis-0 min-w-60 max-md:max-w-full">
-						<div className="flex flex-col items-start w-full max-md:max-w-full">
-							<h1 className="gap-2.5 max-md:max-w-full">
-								LỘ TRÌNH HỌC DÀNH CHO TEENS
-							</h1>
-							<img
-								src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/a3f10b8b79a0235821fc9aca96b22509a2168b13?placeholderIfAbsent=true"
-								className="object-contain aspect-[5.32] w-[85px]"
-								alt=""
-							/>
+
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+				{/* Header Section */}
+				<div className="text-center mb-16 animate-fadeInUp">
+					<div className="flex flex-col lg:flex-row justify-between items-center mb-8">
+						<div className="flex-1 text-center lg:text-left">
+							<h2 className="text-4xl font-bold text-[#083D77] mb-4">
+								LỘ TRÌNH HỌC DÀNH CHO <span className="bg-gradient-to-r from-[#FFEA00] to-[#FFD700] bg-clip-text text-transparent">TEENS</span>
+							</h2>
+							<div className="w-20 h-1 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] mx-auto lg:mx-0 rounded-full"></div>
+						</div>
+						
+						<div className="flex items-center space-x-4 mt-6 lg:mt-0 animate-fadeInRight delay-200">
+							<div className="flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] rounded-full flex items-center justify-center shadow-md">
+									<img
+										src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/7fe39650d3675ad48497574ab2254dab7be7286e?placeholderIfAbsent=true"
+										className="w-8 h-8 object-contain"
+										alt="Wings of Opportunity"
+									/>
+								</div>
+								<div className="text-sm font-semibold text-[#083D77]">
+									Wings of<br />Opportunity
+								</div>
+							</div>
 						</div>
 					</div>
-					<div className="flex gap-3.5 items-center self-stretch my-auto">
-						<div className="flex gap-2.5 items-center self-stretch my-auto">
-							<div className="flex overflow-hidden flex-col justify-center items-center self-stretch pr-2 pl-2 my-auto bg-yellow-400 h-[58px] min-h-[58px] rounded-[34.091px] w-[58px]">
-								<img
-									src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/7fe39650d3675ad48497574ab2254dab7be7286e?placeholderIfAbsent=true"
-									className="object-contain aspect-[1.43] w-[43px]"
-									alt=""
+					
+					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+						Lộ trình học tập có cấu trúc và khoa học, giúp học viên phát triển từng bước một cách vững chắc
+					</p>
+				</div>
+
+				{/* Level Cards Section */}
+				<div className="mb-12 animate-fadeInUp delay-300">
+					<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+						{levelData.map((level, index) => (
+							<div key={index} className="animate-scaleIn" style={{ animationDelay: `${index * 0.1}s` }}>
+								<LevelCard
+									title={level.title}
+									subtitle={level.subtitle}
+									skills={level.skills}
+									backgroundColor={level.backgroundColor}
 								/>
 							</div>
-							<div className="self-stretch my-auto text-sm text-sky-900 border-indigo-900">
-								Wings of
-								<br />
-								Opportunity
-							</div>
-						</div>
-					</div>
-				</header>
-
-				<main className="flex flex-col justify-center px-10 mt-6 w-full max-md:px-5 max-md:max-w-full">
-					<div className="flex flex-wrap gap-3 w-full text-xs font-bold leading-4 text-blue-900 max-md:max-w-full">
-						{levelData.map((level, index) => (
-							<LevelCard
-								key={index}
-								title={level.title}
-								subtitle={level.subtitle}
-								skills={level.skills}
-								backgroundColor={level.backgroundColor}
-							/>
 						))}
 					</div>
+				</div>
 
-					<div className="mt-4 w-full font-extrabold max-md:max-w-full">
-						<div className="flex flex-wrap gap-1 items-start w-full max-md:max-w-full">
+				{/* Certification and Duration Section */}
+				<div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200 animate-fadeInUp delay-500">
+					<div className="space-y-6">
+						{/* Cambridge Row */}
+						<div className="animate-fadeInLeft delay-600">
 							<CertificationRow
 								label={cambridgeData.label}
 								items={cambridgeData.items}
 							/>
 						</div>
 
-						<div className="flex flex-wrap gap-1 items-start mt-8 w-full max-md:max-w-full">
-							<div className="text-sm text-sky-900 w-[69px]">CEFR</div>
-							<div className="flex flex-1 shrink gap-4 justify-center items-center text-xs text-center text-blue-900 basis-0 min-w-60 max-md:max-w-full">
-								<div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto w-full basis-0 min-w-60 max-md:max-w-full">
-									<div className="flex flex-wrap gap-2 items-start w-full max-md:max-w-full">
-										{cefrData.items.map((item, index) => (
-											<div
-												key={index}
-												className="overflow-hidden flex-1 shrink px-1 pt-1 pb-2 bg-cyan-400 rounded-md basis-0 border-neutral-800 shadow-[3px_3px_0px_rgba(34,34,34,1)]"
-											>
-												<div className="overflow-hidden gap-1.5 self-stretch px-3.5 py-1.5 w-full bg-white rounded-md border-neutral-800 shadow-[1px_1px_0px_rgba(34,34,34,1)]">
-													{item.text}
+						{/* CEFR Row */}
+						<div className="animate-fadeInLeft delay-700">
+							<div className="flex flex-wrap gap-1 items-start w-full">
+								<div className="text-sm font-extrabold text-[#083D77] w-[69px]">CEFR</div>
+								<div className="flex flex-1 shrink gap-4 justify-center items-center text-xs text-center text-blue-900 basis-0 min-w-60">
+									<div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto w-full basis-0 min-w-60">
+										<div className="flex flex-wrap gap-2 items-start w-full">
+											{cefrData.items.map((item, index) => (
+												<div
+													key={index}
+													className="overflow-hidden flex-1 shrink px-1 pt-1 pb-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-md basis-0 border-neutral-800 shadow-[3px_3px_0px_rgba(34,34,34,1)] hover:shadow-[5px_5px_0px_rgba(34,34,34,1)] transition-all duration-300 hover:scale-105"
+												>
+													<div className="overflow-hidden gap-1.5 self-stretch px-3.5 py-1.5 w-full bg-white rounded-md border-neutral-800 shadow-[1px_1px_0px_rgba(34,34,34,1)] font-semibold">
+														{item.text}
+													</div>
 												</div>
-											</div>
-										))}
+											))}
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<div className="flex flex-wrap gap-1 items-start mt-8 w-full max-md:max-w-full">
-							<div className="text-sm text-sky-900 w-[69px]">Thời lượng</div>
-							<div className="flex flex-1 shrink gap-4 justify-center items-center text-xs text-center text-blue-900 basis-0 min-w-60 max-md:max-w-full">
-								<div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto w-full basis-0 min-w-60 max-md:max-w-full">
-									<div className="flex flex-wrap gap-2 items-start w-full max-md:max-w-full">
-										{durationData.items.map((item, index) => (
-											<div
-												key={index}
-												className="overflow-hidden flex-1 shrink px-1 pt-1 pb-2 bg-cyan-400 rounded-md basis-0 border-neutral-800 shadow-[3px_3px_0px_rgba(34,34,34,1)]"
-											>
-												<div className="overflow-hidden gap-1.5 self-stretch px-3.5 py-1.5 w-full bg-white rounded-md border-neutral-800 shadow-[1px_1px_0px_rgba(34,34,34,1)]">
-													{item.text}
+						{/* Duration Row */}
+						<div className="animate-fadeInLeft delay-800">
+							<div className="flex flex-wrap gap-1 items-start w-full">
+								<div className="text-sm font-extrabold text-[#083D77] w-[69px]">Thời lượng</div>
+								<div className="flex flex-1 shrink gap-4 justify-center items-center text-xs text-center text-blue-900 basis-0 min-w-60">
+									<div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto w-full basis-0 min-w-60">
+										<div className="flex flex-wrap gap-2 items-start w-full">
+											{durationData.items.map((item, index) => (
+												<div
+													key={index}
+													className="overflow-hidden flex-1 shrink px-1 pt-1 pb-2 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] rounded-md basis-0 border-neutral-800 shadow-[3px_3px_0px_rgba(34,34,34,1)] hover:shadow-[5px_5px_0px_rgba(34,34,34,1)] transition-all duration-300 hover:scale-105"
+												>
+													<div className="overflow-hidden gap-1.5 self-stretch px-3.5 py-1.5 w-full bg-white rounded-md border-neutral-800 shadow-[1px_1px_0px_rgba(34,34,34,1)] font-semibold">
+														{item.text}
+													</div>
 												</div>
-											</div>
-										))}
+											))}
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<AchievementBadges badges={achievementBadges} />
-				</main>
+				{/* Achievement Badges */}
+				<div className="mt-12 animate-fadeInUp delay-900">
+					<div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200">
+						<h3 className="text-2xl font-bold text-[#083D77] mb-6 text-center">
+							Chứng chỉ và <span className="bg-gradient-to-r from-[#FFEA00] to-[#FFD700] bg-clip-text text-transparent">Thành tựu</span>
+						</h3>
+						<AchievementBadges badges={achievementBadges} />
+					</div>
+				</div>
 			</div>
 
+			{/* Decorative elements */}
 			<img
 				src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/7c7df2b82b9b6f495a354806f8b5fe612a2ce08d?placeholderIfAbsent=true"
-				className="object-contain absolute z-0 shrink-0 aspect-[1.21] bottom-[321px] h-[34px] left-[98px] w-[41px]"
+				className="absolute z-0 w-10 h-8 bottom-32 left-24 opacity-30 animate-float delay-1000"
 				alt=""
 			/>
 		</section>
