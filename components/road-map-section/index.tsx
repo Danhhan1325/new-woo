@@ -230,11 +230,11 @@ export const RoadmapSection: React.FC = () => {
 	];
 
 	return (
-		<section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-yellow-50 relative overflow-hidden">
+		<section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-yellow-50 relative overflow-hidden">
 			{/* Background decoration */}
 			<div className="absolute inset-0 bg-gradient-soft"></div>
-			<div className="absolute top-20 left-20 w-32 h-32 bg-[#FFEA00] rounded-full opacity-10 animate-float"></div>
-			<div className="absolute bottom-20 right-20 w-40 h-40 bg-[#083D77] rounded-full opacity-5 animate-float delay-300"></div>
+			<div className="absolute top-10 sm:top-20 left-4 sm:left-20 w-16 sm:w-32 h-16 sm:h-32 bg-[#FFEA00] rounded-full opacity-10 animate-float"></div>
+			<div className="absolute bottom-10 sm:bottom-20 right-4 sm:right-20 w-20 sm:w-40 h-20 sm:h-40 bg-[#083D77] rounded-full opacity-5 animate-float delay-300"></div>
 
 			{/* Background image */}
 			<img
@@ -245,55 +245,90 @@ export const RoadmapSection: React.FC = () => {
 
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 				{/* Header Section */}
-				<div className="text-center mb-16 animate-fadeInUp">
-					<div className="flex flex-col lg:flex-row justify-between items-center mb-8">
+				<div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fadeInUp">
+					<div className="flex flex-col space-y-6 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center mb-6 sm:mb-8">
 						<div className="flex-1 text-center lg:text-left">
-							<h2 className="text-4xl font-bold text-[#083D77] mb-4">
+							<h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#083D77] mb-3 sm:mb-4 leading-tight">
 								LỘ TRÌNH HỌC DÀNH CHO <span className="bg-gradient-to-r from-[#FFEA00] to-[#FFD700] bg-clip-text text-transparent">TEENS</span>
 							</h2>
-							<div className="w-20 h-1 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] mx-auto lg:mx-0 rounded-full"></div>
+							<div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] mx-auto lg:mx-0 rounded-full"></div>
 						</div>
 						
-						<div className="flex items-center space-x-4 mt-6 lg:mt-0 animate-fadeInRight delay-200">
-							<div className="flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-								<div className="w-12 h-12 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] rounded-full flex items-center justify-center shadow-md">
+						<div className="flex justify-center lg:justify-end animate-fadeInRight delay-200">
+							<div className="flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+								<div className="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] rounded-full flex items-center justify-center shadow-md">
 									<img
 										src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/7fe39650d3675ad48497574ab2254dab7be7286e?placeholderIfAbsent=true"
-										className="w-8 h-8 object-contain"
+										className="w-6 sm:w-8 h-6 sm:h-8 object-contain"
 										alt="Wings of Opportunity"
 									/>
 								</div>
-								<div className="text-sm font-semibold text-[#083D77]">
+								<div className="text-xs sm:text-sm font-semibold text-[#083D77] leading-tight">
 									Wings of<br />Opportunity
 								</div>
 							</div>
 						</div>
 					</div>
 					
-					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+					<p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
 						Lộ trình học tập có cấu trúc và khoa học, giúp học viên phát triển từng bước một cách vững chắc
 					</p>
 				</div>
 
 				{/* Level Cards Section */}
-				<div className="mb-12 animate-fadeInUp delay-300">
-					<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-						{levelData.map((level, index) => (
-							<div key={index} className="animate-scaleIn" style={{ animationDelay: `${index * 0.1}s` }}>
-								<LevelCard
-									title={level.title}
-									subtitle={level.subtitle}
-									skills={level.skills}
-									backgroundColor={level.backgroundColor}
-								/>
-							</div>
-						))}
+				<div className="mb-8 sm:mb-12 animate-fadeInUp delay-300">
+					{/* Mobile: Single column scrollable */}
+					<div className="block sm:hidden">
+						<div className="space-y-4">
+							{levelData.map((level, index) => (
+								<div key={index} className="animate-scaleIn" style={{ animationDelay: `${index * 0.1}s` }}>
+									<LevelCard
+										title={level.title}
+										subtitle={level.subtitle}
+										skills={level.skills}
+										backgroundColor={level.backgroundColor}
+									/>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* Tablet: 2 columns */}
+					<div className="hidden sm:block lg:hidden">
+						<div className="grid grid-cols-2 gap-4">
+							{levelData.map((level, index) => (
+								<div key={index} className="animate-scaleIn" style={{ animationDelay: `${index * 0.1}s` }}>
+									<LevelCard
+										title={level.title}
+										subtitle={level.subtitle}
+										skills={level.skills}
+										backgroundColor={level.backgroundColor}
+									/>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* Desktop: 5 columns */}
+					<div className="hidden lg:block">
+						<div className="grid grid-cols-5 gap-4">
+							{levelData.map((level, index) => (
+								<div key={index} className="animate-scaleIn" style={{ animationDelay: `${index * 0.1}s` }}>
+									<LevelCard
+										title={level.title}
+										subtitle={level.subtitle}
+										skills={level.skills}
+										backgroundColor={level.backgroundColor}
+									/>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 
 				{/* Certification and Duration Section */}
-				<div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200 animate-fadeInUp delay-500">
-					<div className="space-y-6">
+				<div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-gray-200 animate-fadeInUp delay-500 mb-8 sm:mb-12">
+					<div className="space-y-4 sm:space-y-6">
 						{/* Cambridge Row */}
 						<div className="animate-fadeInLeft delay-600">
 							<CertificationRow
@@ -304,17 +339,17 @@ export const RoadmapSection: React.FC = () => {
 
 						{/* CEFR Row */}
 						<div className="animate-fadeInLeft delay-700">
-							<div className="flex flex-wrap gap-1 items-start w-full">
-								<div className="text-sm font-extrabold text-[#083D77] w-[69px]">CEFR</div>
-								<div className="flex flex-1 shrink gap-4 justify-center items-center text-xs text-center text-blue-900 basis-0 min-w-60">
-									<div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto w-full basis-0 min-w-60">
-										<div className="flex flex-wrap gap-2 items-start w-full">
+							<div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-start w-full">
+								<div className="text-sm font-extrabold text-[#083D77] w-full sm:w-20 flex-shrink-0 mb-2 sm:mb-0">CEFR</div>
+								<div className="flex flex-1 justify-center items-center text-xs text-center text-blue-900 min-w-0 w-full">
+									<div className="flex flex-col justify-center w-full">
+										<div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 items-start w-full">
 											{cefrData.items.map((item, index) => (
 												<div
 													key={index}
-													className="overflow-hidden flex-1 shrink px-1 pt-1 pb-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-md basis-0 border-neutral-800 shadow-[3px_3px_0px_rgba(34,34,34,1)] hover:shadow-[5px_5px_0px_rgba(34,34,34,1)] transition-all duration-300 hover:scale-105"
+													className="overflow-hidden px-1 pt-1 pb-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-md border-2 border-gray-300 shadow-[3px_3px_0px_rgba(34,34,34,1)] hover:shadow-[5px_5px_0px_rgba(34,34,34,1)] transition-all duration-300 hover:scale-105 sm:flex-1 sm:min-w-0"
 												>
-													<div className="overflow-hidden gap-1.5 self-stretch px-3.5 py-1.5 w-full bg-white rounded-md border-neutral-800 shadow-[1px_1px_0px_rgba(34,34,34,1)] font-semibold">
+													<div className="overflow-hidden gap-1.5 self-stretch px-2 sm:px-3.5 py-1.5 w-full bg-white rounded-md border border-gray-300 shadow-[1px_1px_0px_rgba(34,34,34,1)] font-semibold text-xs">
 														{item.text}
 													</div>
 												</div>
@@ -327,17 +362,17 @@ export const RoadmapSection: React.FC = () => {
 
 						{/* Duration Row */}
 						<div className="animate-fadeInLeft delay-800">
-							<div className="flex flex-wrap gap-1 items-start w-full">
-								<div className="text-sm font-extrabold text-[#083D77] w-[69px]">Thời lượng</div>
-								<div className="flex flex-1 shrink gap-4 justify-center items-center text-xs text-center text-blue-900 basis-0 min-w-60">
-									<div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto w-full basis-0 min-w-60">
-										<div className="flex flex-wrap gap-2 items-start w-full">
+							<div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-start w-full">
+								<div className="text-sm font-extrabold text-[#083D77] w-full sm:w-20 flex-shrink-0 mb-2 sm:mb-0">Thời lượng</div>
+								<div className="flex flex-1 justify-center items-center text-xs text-center text-blue-900 min-w-0 w-full">
+									<div className="flex flex-col justify-center w-full">
+										<div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 items-start w-full">
 											{durationData.items.map((item, index) => (
 												<div
 													key={index}
-													className="overflow-hidden flex-1 shrink px-1 pt-1 pb-2 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] rounded-md basis-0 border-neutral-800 shadow-[3px_3px_0px_rgba(34,34,34,1)] hover:shadow-[5px_5px_0px_rgba(34,34,34,1)] transition-all duration-300 hover:scale-105"
+													className="overflow-hidden px-1 pt-1 pb-2 bg-gradient-to-r from-[#FFEA00] to-[#FFD700] rounded-md border-2 border-gray-300 shadow-[3px_3px_0px_rgba(34,34,34,1)] hover:shadow-[5px_5px_0px_rgba(34,34,34,1)] transition-all duration-300 hover:scale-105 sm:flex-1 sm:min-w-0"
 												>
-													<div className="overflow-hidden gap-1.5 self-stretch px-3.5 py-1.5 w-full bg-white rounded-md border-neutral-800 shadow-[1px_1px_0px_rgba(34,34,34,1)] font-semibold">
+													<div className="overflow-hidden gap-1.5 self-stretch px-2 sm:px-3.5 py-1.5 w-full bg-white rounded-md border border-gray-300 shadow-[1px_1px_0px_rgba(34,34,34,1)] font-semibold text-xs">
 														{item.text}
 													</div>
 												</div>
@@ -351,9 +386,9 @@ export const RoadmapSection: React.FC = () => {
 				</div>
 
 				{/* Achievement Badges */}
-				<div className="mt-12 animate-fadeInUp delay-900">
-					<div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200">
-						<h3 className="text-2xl font-bold text-[#083D77] mb-6 text-center">
+				<div className="animate-fadeInUp delay-900">
+					<div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-gray-200">
+						<h3 className="text-xl sm:text-2xl font-bold text-[#083D77] mb-4 sm:mb-6 text-center">
 							Chứng chỉ và <span className="bg-gradient-to-r from-[#FFEA00] to-[#FFD700] bg-clip-text text-transparent">Thành tựu</span>
 						</h3>
 						<AchievementBadges badges={achievementBadges} />
@@ -364,7 +399,7 @@ export const RoadmapSection: React.FC = () => {
 			{/* Decorative elements */}
 			<img
 				src="https://cdn.builder.io/api/v1/image/assets/31c7b1c5a83a4753853375a2754b402c/7c7df2b82b9b6f495a354806f8b5fe612a2ce08d?placeholderIfAbsent=true"
-				className="absolute z-0 w-10 h-8 bottom-32 left-24 opacity-30 animate-float delay-1000"
+				className="absolute z-0 w-6 sm:w-10 h-5 sm:h-8 bottom-16 sm:bottom-32 left-12 sm:left-24 opacity-30 animate-float delay-1000"
 				alt=""
 			/>
 		</section>
